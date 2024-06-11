@@ -1,0 +1,20 @@
+[versions]
+minecraft = "1.20.6"
+quilt-mappings = "1.20.6+build.6"
+fabric-loom = "1.6-SNAPSHOT"
+fabric-loader = "0.15.11"
+fabric-api = "0.98.0+1.20.6"
+fabric-kt = "1.11.0+kotlin.2.0.0"
+kotlin = "2.0.0"
+
+[libraries]
+minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
+fabric-loader = { module = "net.fabricmc:fabric-loader", version.ref = "fabric-loader" }
+fabric-api = { module = "net.fabricmc.fabric-api:fabric-api", version.ref = "fabric-api" }
+fabric-kt = { module = "net.fabricmc:fabric-language-kotlin", version.ref = "fabric-kt" }
+quilt-mappings = { module = "org.quiltmc:quilt-mappings", version.ref = "quilt-mappings" }
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+fabric-loom = { id = "fabric-loom", version.ref = "fabric-loom" }
