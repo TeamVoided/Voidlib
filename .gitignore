@@ -1,38 +1,45 @@
-# Gradle
 .gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
 
-# Eclipse
-.checkstyle
-.classpath
-.metadata
-.settings
-.project
-*.launch
+### TeamVoided
+src/main/generated/
 
-# Visual Studio Code
-.vscode
-
-# Intellij/Idea
-.factorypath
-.idea
+### IntelliJ IDEA ###
+/.idea/
+*.iws
 *.iml
 *.ipr
-*.iws
-
-# Build artifacts
-bin/
-build/
-jars/
 out/
-classes/
+!**/src/main/**/out/
+!**/src/test/**/out/
 
-# Debug artifacts
-run
-*.log
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
 
-# Windows
-*.db
-$RECYCLE.BIN/
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
 
-# Mac
+### VS Code ###
+.vscode/
+
+### Mac OS ###
 .DS_Store
+
+/run/
+.env
