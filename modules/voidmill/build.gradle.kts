@@ -18,5 +18,5 @@ publishScript {
 }
 
 base.archivesName = "voidlib2-voidmill"
-version = "1.0.1"
+version = "1.0.2"
 group = properties["maven_group"] as String
