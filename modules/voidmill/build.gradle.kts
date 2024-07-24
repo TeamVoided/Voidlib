@@ -8,6 +8,7 @@ plugins {
 modSettings {
     modId("voidmill")
     modName("VoidLib2: Example Module")
+    mixinFile("voidmill.mixin.json")
 }
 
 publishScript {
@@ -17,5 +18,5 @@ publishScript {
 }
 
 base.archivesName = "voidlib2-voidmill"
-version = "1.0.0"
+version = "1.0.1"
 group = properties["maven_group"] as String
