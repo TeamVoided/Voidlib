@@ -6,7 +6,7 @@ plugins {
 }
 
 modSettings {
-    modId("example-module")
+    modId("voidmill")
     modName("VoidLib2: Example Module")
 }
 
@@ -16,6 +16,6 @@ publishScript {
     publication(modSettings.modId(), isSnapshot = true)
 }
 
-base.archivesName = "voidlib2-example-module"
+base.archivesName = "voidlib2-voidmill"
 version = properties["version"] as String
 group = properties["maven_group"] as String
