@@ -1,3 +1,5 @@
 package org.teamvoided.voidmill.sign
 
-interface VoidSign
+import net.minecraft.util.Identifier
+
+interface VoidSign { val texture: Identifier }
