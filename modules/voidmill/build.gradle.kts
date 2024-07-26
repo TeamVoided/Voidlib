@@ -7,7 +7,8 @@ plugins {
 
 modSettings {
     modId("voidmill")
-    modName("A helpful tool for making wood and wood related things")
+    modName("Voidmill")
+    description = "A helpful tool for making wood and wood related things"
     mixinFile("voidmill.mixin.json")
 }
 
