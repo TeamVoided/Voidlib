@@ -17,6 +17,6 @@ publishScript {
     publication(modSettings.modId(), isSnapshot = true)
 }
 
-base.archivesName = "voidlib2-voidmill"
+base.archivesName = "voidmill"
 version = "1.0.3"
 group = properties["maven_group"] as String
