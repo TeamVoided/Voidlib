@@ -5,5 +5,5 @@ import net.minecraft.block.sign.WallHangingSignBlock
 
 @Suppress("unused")
 class VoidWallHangingSignBlock(woodType: WoodType, settings: Settings) :
-    WallHangingSignBlock(woodType, settings), VoidSign
+    WallHangingSignBlock(woodType, settings.solid()), VoidSign
 

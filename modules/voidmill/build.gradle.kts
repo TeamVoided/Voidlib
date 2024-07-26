@@ -7,7 +7,7 @@ plugins {
 
 modSettings {
     modId("voidmill")
-    modName("VoidLib2: Example Module")
+    modName("A helpful tool for making wood and wood related things")
     mixinFile("voidmill.mixin.json")
 }
 
