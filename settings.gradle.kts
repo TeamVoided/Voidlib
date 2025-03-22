@@ -8,7 +8,7 @@ pluginManagement {
     }
 }
 
-rootProject.name = "Voidlib2"
+rootProject.name = "Voidlib"
 
 include("voidmill")
 project(":voidmill").projectDir = file("modules/voidmill")
