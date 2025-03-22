@@ -19,5 +19,5 @@ publishScript {
 }
 
 base.archivesName = id
-version = "1.0.4"
+version = "1.0.5"
 group = properties["maven_group"] as String
