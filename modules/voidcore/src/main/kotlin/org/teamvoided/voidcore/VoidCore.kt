@@ -1,24 +1,43 @@
 package org.teamvoided.voidcore
 
-import com.mojang.authlib.GameProfile
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.literal
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback
-import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback
+import net.fabricmc.fabric.api.networking.v1.PacketSender
+import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents
+import net.fabricmc.loader.api.FabricLoader
 import net.minecraft.client.MinecraftClient
-import net.minecraft.client.texture.PlayerSkin
+import net.minecraft.server.MinecraftServer
+import net.minecraft.server.network.ServerPlayNetworkHandler
+import net.minecraft.sound.SoundCategory
+import net.minecraft.sound.SoundEvents
 import net.minecraft.text.Text
-import net.minecraft.util.Identifier
 import org.slf4j.LoggerFactory
-import org.teamvoided.voidcore.CapeManager.getCustomCape
+import java.util.*
 
 @Suppress("unused")
 object VoidCore {
     val log = LoggerFactory.getLogger(this::class.simpleName)
     val MOID = "voidcore"
-    val TEST_CAPE = Identifier.of(MOID, "textures/entity/cape/cape.png")
+
+    val IS_ENDER = listOf("022e8cd8-4ecf-4416-b0e8-3bfba11498f0", "a5fc6689-7d19-4c39-a04e-95e4ec460298")
+        .map(UUID::fromString)
 
     fun init() {
         log.info("VoidCore is initializing")
+
+        ServerPlayConnectionEvents.JOIN.register(::hello)
+    }
+
+    fun hello(handler: ServerPlayNetworkHandler, sender: PacketSender, server: MinecraftServer) {
+        if (IS_ENDER.contains(handler.player.gameProfile.id)) {
+            for (player in server.playerManager.playerList) {
+                player.world.playSoundFromEntity(
+                    null, player,
+                    SoundEvents.ENTITY_WITHER_SPAWN, SoundCategory.MASTER,
+                    1f, 1f
+                )
+            }
+        }
     }
 
     fun initClient() {
@@ -36,24 +55,5 @@ object VoidCore {
                 .build()
             dispatcher.root.addChild(root)
         }
-        HudRenderCallback.EVENT.register { gui, delta ->
-            gui.drawTexture(TEST_CAPE, 10, 10, 0f, 0f, 64, 32, 64, 32)
-        }
-    }
-
-    @JvmStatic
-    fun modifyPlayerCape(inputSkin: PlayerSkin, profile: GameProfile): PlayerSkin {
-        var skin = inputSkin
-        val customCape = profile.getCustomCape()
-        if (customCape != null) skin = PlayerSkin(
-            inputSkin.texture,
-            inputSkin.textureUrl,
-            customCape,
-            inputSkin.capeTexture,
-            inputSkin.model,
-            inputSkin.secure
-        )
-
-        return skin
     }
 }
