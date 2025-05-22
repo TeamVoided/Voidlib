@@ -42,4 +42,5 @@ bin/
 src/main/generated/
 .kotlin
 /run/
+/modules/*/run/
 .env
