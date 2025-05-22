@@ -12,3 +12,6 @@ rootProject.name = "Voidlib"
 
 include("voidmill")
 project(":voidmill").projectDir = file("modules/voidmill")
+
+include("voidcore")
+project(":voidcore").projectDir = file("modules/voidcore")
