@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package org.teamvoided.voidcore.serlializers
 
 import kotlinx.serialization.KSerializer

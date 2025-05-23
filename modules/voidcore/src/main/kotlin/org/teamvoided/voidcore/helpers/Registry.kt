@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package org.teamvoided.voidcore.helpers
 
 import net.minecraft.registry.Holder
