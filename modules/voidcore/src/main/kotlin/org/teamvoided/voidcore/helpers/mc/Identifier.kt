@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package org.teamvoided.voidcore.helpers
+package org.teamvoided.voidcore.helpers.mc
 
 import net.minecraft.util.Identifier
 
