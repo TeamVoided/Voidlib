@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package org.teamvoided.voidcore.mc.wrappers
+package org.teamvoided.voidcore.mc
 
 import net.minecraft.entity.effect.StatusEffect
 import net.minecraft.entity.effect.StatusEffectType
