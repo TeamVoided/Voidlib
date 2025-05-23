@@ -11,7 +11,5 @@ object VoidCore {
         log.info("VoidCore is Starting")
     }
 
-    fun initClient() {
-        log.info("VoidCore is initializing client")
-    }
+    fun initClient() {}
 }
