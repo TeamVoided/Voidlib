@@ -1,4 +1,4 @@
-package org.teamvoided.voidcore
+package org.teamvoided.voidcore.misc
 
 import java.util.UUID
 

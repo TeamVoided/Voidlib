@@ -6,7 +6,7 @@ import net.minecraft.server.MinecraftServer
 import net.minecraft.server.network.ServerPlayNetworkHandler
 import net.minecraft.sound.SoundCategory
 import net.minecraft.sound.SoundEvents
-import org.teamvoided.voidcore.IS_ENDER
+import org.teamvoided.voidcore.misc.IS_ENDER
 
 @Suppress("unused")
 object EnderJoinSound {
