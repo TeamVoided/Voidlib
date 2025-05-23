@@ -12,7 +12,7 @@ import net.minecraft.entity.EntityType
 import kotlin.jvm.optionals.getOrNull
 
 
-class EntityTypeSerializer : KSerializer<EntityType<*>> {
+open class EntityTypeSerializer : KSerializer<EntityType<*>> {
     override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("type", PrimitiveKind.STRING)
     override fun serialize(encoder: Encoder, value: EntityType<*>) =
         encoder.encodeString(EntityType.getId(value).toString())
