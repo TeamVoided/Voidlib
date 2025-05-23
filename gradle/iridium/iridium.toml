@@ -11,7 +11,7 @@ fabricLoaderVersion = "0.16.14"
 fabricApiVersion = "0.116.0+1.21.1"
 fabricLangKotlinVersion = "1.13.2+kotlin.2.1.20"
 license = "MIT"
-modules = [ "voidmill", "voidcore" ]
+modules = [ "voidmill", "voidcore", "vtags" ]
 modDescription = "A collection of libraries for moding minecraft."
 # Modmenu badges, values can be: [ library, deprecated ]
 badges = [ "library" ]

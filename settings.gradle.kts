@@ -23,3 +23,9 @@ project(":voidmill").projectDir = file("modules/voidmill")
 
 include("voidcore")
 project(":voidcore").projectDir = file("modules/voidcore")
+
+include("vtags")
+project(":vtags").projectDir = file("modules/vtags")
+
+
+
