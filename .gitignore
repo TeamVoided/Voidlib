@@ -2,6 +2,7 @@
 src/main/generated/
 .kotlin/
 /modules/*/run/
+/modules/*/src/main/generated/
 run/
 .env
 

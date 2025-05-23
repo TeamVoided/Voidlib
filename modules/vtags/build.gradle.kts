@@ -13,10 +13,23 @@ modSettings {
     modVersion = "0.1.0"
     modDescription = "Tags that should be in vanilla or at least in #c"
 
-    entrypoint("fabric-datagen", "org.teamvoided.devin.vtags.VTagsData")
+    entrypoint("fabric-datagen", "org.teamvoided.vtags.VTagsData")
 }
+
+loom {
+    runs {
+        create("TagGen") {
+            client()
+            vmArg("-Dfabric-api.datagen")
+            vmArg("-Dfabric-api.datagen.output-dir=${file("src/main/generated")}")
+            vmArg("-Dfabric-api.datagen.modid=${id}")
+            runDir("build/datagen")
+        }
+    }
+}
+
 dependencies {
-    implementation(project(":voidcore"))
+    modImplementation(project(":voidcore"))
 }
 
 publishScript {
