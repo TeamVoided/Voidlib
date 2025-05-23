@@ -5,19 +5,16 @@ plugins {
     id("iridium.project.publish-script")
 }
 val id = "voidmill"
-
 modSettings {
     modId(id)
     modName("Voidmill")
-    description = "A helpful tool for making wood and wood related things"
+    modVersion = "1.0.5"
+    modDescription = "A helpful tool for making wood and wood related things"
     mixinFile("${id}.mixin.json")
 }
 
 publishScript {
     releaseRepository("TeamVoided", "https://maven.teamvoided.org/releases")
-    publication(modSettings.modId(), isSnapshot = false)
+    publication(id, false)
+    publishSources(true)
 }
-
-base.archivesName = id
-version = "1.0.5"
-group = properties["maven_group"] as String

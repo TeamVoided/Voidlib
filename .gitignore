@@ -1,3 +1,11 @@
+### PROJECT ###
+src/main/generated/
+.kotlin/
+/modules/*/run/
+run/
+.env
+
+### Gradle ###
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
@@ -37,10 +45,3 @@ bin/
 
 ### Mac OS ###
 .DS_Store
-
-### TeamVoided
-src/main/generated/
-.kotlin
-/run/
-/modules/*/run/
-.env
