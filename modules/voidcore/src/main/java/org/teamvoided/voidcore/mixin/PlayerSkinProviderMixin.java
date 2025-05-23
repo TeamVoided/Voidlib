@@ -8,8 +8,8 @@ import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
+import org.teamvoided.voidcore.goofy.CapeManager;
 
-import static org.teamvoided.voidcore.UtilsKt.modifyPlayerCape;
 
 @Mixin(PlayerListEntry.class)
 public class PlayerSkinProviderMixin {
@@ -19,6 +19,6 @@ public class PlayerSkinProviderMixin {
 
     @ModifyReturnValue(method = "getSkin", at = @At("RETURN"))
     private PlayerSkin supports(PlayerSkin original) {
-        return modifyPlayerCape(original, this.profile);
+        return CapeManager.modifyPlayerCape(original, this.profile);
     }
 }
