@@ -36,5 +36,13 @@ class VBlockTagProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.P
             RAW_GOLD_BLOCK,
             RAW_COPPER_BLOCK
         )
+
+        getOrCreateTagBuilder(VBlockTags.TORCHES).add(
+            TORCH, WALL_TORCH,
+            REDSTONE_TORCH, REDSTONE_WALL_TORCH,
+            SOUL_TORCH, SOUL_WALL_TORCH
+        )
+        getOrCreateTagBuilder(VBlockTags.LANTERNS)
+            .add(LANTERN, SOUL_LANTERN)
     }
 }

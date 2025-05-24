@@ -12,6 +12,10 @@ object VItemTags {
     val STONE_ORES = create("stone_ores")
     val NETHERRACK_ORES = create("netherrack_ores")
     val RAW_ORE_BLOCKS = create("raw_ore_blocks")
-    
+
+     // Light Blocks
+    val TORCHES = create("torches")
+    val LANTERNS =  create("lanterns")
+
     fun create(name: String) = RegistryKeys.ITEM.tag(id(name))
 }

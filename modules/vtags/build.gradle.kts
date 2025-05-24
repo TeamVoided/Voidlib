@@ -10,7 +10,7 @@ base.archivesName = id
 modSettings {
     modId(id)
     modName("vTags")
-    modVersion = "0.1.0"
+    modVersion = "0.2.0"
     modDescription = "Tags that should be in vanilla or at least in #c"
 
     entrypoint("fabric-datagen", "org.teamvoided.vtags.VTagsData")

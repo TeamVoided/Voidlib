@@ -2,6 +2,7 @@ package org.teamvoided.vtags.gen
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider.ItemTagProvider
+import net.minecraft.item.Items.*
 import net.minecraft.registry.HolderLookup
 import org.teamvoided.vtags.v1.VBlockTags
 import org.teamvoided.vtags.v1.VItemTags
@@ -11,6 +12,10 @@ class VItemTagProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Pr
     ItemTagProvider(o, r, blockTags) {
     override fun configure(arg: HolderLookup.Provider) {
         copyTags()
+
+
+        getOrCreateTagBuilder(VItemTags.TORCHES)
+            .add(TORCH, REDSTONE_TORCH, SOUL_TORCH)
     }
 
     fun copyTags() {
@@ -18,5 +23,8 @@ class VItemTagProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Pr
         copy(VBlockTags.STONE_ORES, VItemTags.STONE_ORES)
         copy(VBlockTags.NETHERRACK_ORES, VItemTags.NETHERRACK_ORES)
         copy(VBlockTags.RAW_ORE_BLOCKS, VItemTags.RAW_ORE_BLOCKS)
+
+
+        copy(VBlockTags.LANTERNS, VItemTags.LANTERNS)
     }
 }
