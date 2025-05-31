@@ -51,7 +51,9 @@ dependencies {
     modImplementation(libs.fzzy.config)
     // QoL
     modImplementation(libs.modmenu)
-    modCompileOnly("${libs.emi.get()}:api")
+    modCompileOnly("${libs.emi.get()}:api"){
+        this.excludeRules
+    }
     modLocalRuntime(libs.emi)
     // Testing
     modImplementation(libs.creative.works)

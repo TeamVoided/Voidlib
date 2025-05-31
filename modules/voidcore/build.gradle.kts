@@ -20,6 +20,7 @@ modSettings {
 
 publishScript {
     releaseRepository("TeamVoided", "https://maven.teamvoided.org/releases")
-    publication(modSettings.modId(), isSnapshot = false)
+    publication(id, isSnapshot = false)
+    publishSources(true)
 }
 
