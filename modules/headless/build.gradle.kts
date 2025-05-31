@@ -11,27 +11,17 @@ modSettings {
     modId(id)
     modName("Headless")
     modVersion = "1.0.0"
-    modDescription = "Got head?"
-
+    modDescription = "Yeah, I got head!"
 
     entrypoint("main", "org.teamvoided.headless.Headless::init")
     entrypoint("client", "org.teamvoided.headless.HeadlessClient::init")
-//    entrypoint("fabric-datagen", "org.teamvoided.headless.data.gen.HeadlessData")
+
     mixinFile("${modId()}.client.mixins.json")
     mixinFile("${modId()}.mixins.json")
 }
 
 loom {
     splitEnvironmentSourceSets()
-  /*  runs {
-        create("TagGen") {
-            client()
-            vmArg("-Dfabric-api.datagen")
-            vmArg("-Dfabric-api.datagen.output-dir=${file("src/main/generated")}")
-            vmArg("-Dfabric-api.datagen.modid=${id}")
-            runDir("build/datagen")
-        }
-    }*/
 }
 
 dependencies {
