@@ -8,10 +8,9 @@ import net.minecraft.client.render.block.entity.model.SkullBlockEntityModel
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.util.Identifier
 
-@ExperimentalStdlibApi
-open class SkullWithOverlayModel(root: ModelPart, hat: ModelPart, layer: Identifier) : SkullBlockEntityModel(root) {
-    val overlayLayer: RenderLayer = RenderLayer.getEntityCutoutNoCullZOffset(layer)
-    protected val hat: ModelPart = hat.getChild("hat")
+open class TwoLayerSkullModel(root: ModelPart, hat: ModelPart, layer: Identifier) : SkullBlockEntityModel(root) {
+    open val overlayLayer: RenderLayer = RenderLayer.getEntityCutoutNoCullZOffset(layer)
+    open val hat: ModelPart = hat.getChild("hat")
 
     override fun setHeadAngles(animationProgress: Float, yaw: Float, pitch: Float) {
         super.setHeadAngles(animationProgress, yaw, pitch)
@@ -21,7 +20,6 @@ open class SkullWithOverlayModel(root: ModelPart, hat: ModelPart, layer: Identif
 
     override fun method_2828(matrices: MatrixStack, vertexConsumer: VertexConsumer, i: Int, j: Int, k: Int) {
         super.method_2828(matrices, vertexConsumer, i, j, k)
-
         val provider = MinecraftClient.getInstance().bufferBuilders.entityVertexConsumers
         val buffer = provider.getBuffer(overlayLayer)
         hat.method_22699(matrices, buffer, i, j, k)
@@ -41,6 +39,7 @@ open class SkullWithOverlayModel(root: ModelPart, hat: ModelPart, layer: Identif
             )
             return TexturedModelData.of(modelData, 64, 32)
         }
+
         fun getSkullTexturedModelOverlayData(): TexturedModelData {
             val modelData = ModelData()
             val modelPartData = modelData.root

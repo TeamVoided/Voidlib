@@ -15,10 +15,9 @@ import org.teamvoided.headless.HeadlessRegistry;
 
 import java.util.Map;
 
-@Debug(export = true)
 @Mixin(SkullBlockEntityRenderer.class)
 public abstract class SkullBlockEntityRendererMixin {
-    @Inject(method = "getModels", at = @At(value = "INVOKE", target = "Lcom/google/common/collect/ImmutableMap$Builder;build()Lcom/google/common/collect/ImmutableMap;"))
+    @Inject(method = "getModels", at = @At(value = "INVOKE", target = "Lcom/google/common/collect/ImmutableMap$Builder;build()Lcom/google/common/collect/ImmutableMap;", remap = false))
     private static void addCustomModels(EntityModelLoader modelLoader, CallbackInfoReturnable<Map<SkullBlock.SkullType, AbstractSkullBlockEntityModel>> cir,
                                         @Local ImmutableMap.Builder<SkullBlock.SkullType, AbstractSkullBlockEntityModel> builder) {
         HeadlessRegistry.SKULLS.forEach((type, model) -> builder.put(type, model.invoke(modelLoader)));
