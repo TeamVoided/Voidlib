@@ -24,15 +24,17 @@ object ClientExampleSkulls {
     val STRAY_OVERLAY = mc("textures/entity/skeleton/stray_overlay.png")
     val SUNNY = mc("textures/entity/player/wide/sunny.png")
 
-    fun initExampleSkulls() {
+    internal fun initExampleSkulls() {
         // Registering a skull
         addLayer(HUSK_HEAD, SkullBlockEntityModel::getHeadTexturedModelData)
-        HeadlessRegistry.register(ExampleSkulls.HUSK_LIKE.skull, HUSK) { SkullBlockEntityModel(it.getModelPart(HUSK_HEAD)) }
+        HeadlessRegistry.register(ExampleSkulls.HUSK_LIKE.skull, HUSK) {
+            SkullBlockEntityModel(it.getModelPart(HUSK_HEAD))
+        }
 
         // Registering a basic skull (eg. player, zombie, husk)
         HeadlessRegistry.registerBasicHead(ExampleSkulls.TESTING.skull, SUNNY)
 
-        // Registering a Two Layer skull
+        // Registering a Two Layer skull or more complex skull
         addLayer(BOGGED_HEAD, TwoLayerSkullModel::getSkullTexturedModelData)
         addLayer(BOGGED_HEAD_OVERLAY, TwoLayerSkullModel::getSkullTexturedModelOverlayData)
         HeadlessRegistry.register(ExampleSkulls.BOGGED_LIKE.skull, BOGGED) {

@@ -1,14 +1,18 @@
 package org.teamvoided.headless.render.block.entity.model
 
-import com.mojang.blaze3d.vertex.VertexConsumer
-import net.minecraft.client.MinecraftClient
 import net.minecraft.client.model.*
+import net.minecraft.client.render.OverlayTexture
 import net.minecraft.client.render.RenderLayer
+import net.minecraft.client.render.VertexConsumerProvider
+import net.minecraft.client.render.block.entity.model.AbstractSkullBlockEntityModel
 import net.minecraft.client.render.block.entity.model.SkullBlockEntityModel
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.util.Identifier
+import net.minecraft.util.math.Direction
+import org.teamvoided.headless.api.SkullModelWithAttachment
 
-open class TwoLayerSkullModel(root: ModelPart, hat: ModelPart, layer: Identifier) : SkullBlockEntityModel(root) {
+open class TwoLayerSkullModel(root: ModelPart, hat: ModelPart, layer: Identifier) : SkullBlockEntityModel(root),
+    SkullModelWithAttachment {
     open val overlayLayer: RenderLayer = RenderLayer.getEntityCutoutNoCullZOffset(layer)
     open val hat: ModelPart = hat.getChild("hat")
 
@@ -18,12 +22,13 @@ open class TwoLayerSkullModel(root: ModelPart, hat: ModelPart, layer: Identifier
         hat.pitch = pitch * 0.017453292f
     }
 
-    override fun method_2828(matrices: MatrixStack, vertexConsumer: VertexConsumer, i: Int, j: Int, k: Int) {
-        super.method_2828(matrices, vertexConsumer, i, j, k)
-        val provider = MinecraftClient.getInstance().bufferBuilders.entityVertexConsumers
-        val buffer = provider.getBuffer(overlayLayer)
-        hat.method_22699(matrices, buffer, i, j, k)
-        provider.draw(overlayLayer)
+    override fun renderAttachment(
+        direction: Direction?, yaw: Float,
+        animationProgress: Float, matrices: MatrixStack,
+        vertexConsumers: VertexConsumerProvider, light: Int,
+        model: AbstractSkullBlockEntityModel, renderLayer: RenderLayer,
+    ) {
+        hat.render(matrices, vertexConsumers.getBuffer(overlayLayer), light, OverlayTexture.DEFAULT_UV)
     }
 
     companion object {

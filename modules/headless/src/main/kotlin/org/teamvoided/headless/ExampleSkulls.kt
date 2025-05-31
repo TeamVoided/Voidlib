@@ -14,19 +14,20 @@ import org.teamvoided.headless.block.HeadlessWallSkull
 import org.teamvoided.voidcore.helpers.mc.register
 
 object ExampleSkulls {
-    val items = mutableSetOf<Item>()
+    val skulls = mutableSetOf<SkullData>()
+
     val HUSK_LIKE = makeSkull("husk_like")
     val BOGGED_LIKE = makeSkull("bogged_like")
     val STRAY_LIKE = makeSkull("stray_like")
     val TESTING = makeSkull("testing")
     val MIXING = makeSkull("mixing")
 
-    fun init() {
+    internal fun init() {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.SPAWN_EGGS)
-            .register { items.forEach { item -> it.prepend(item) } }
+            .register { skulls.forEach { data -> it.prepend(data.item) } }
     }
 
-    fun makeSkull(name: String): SkullData {
+    private fun makeSkull(name: String): SkullData {
         val skull = HeadlessSkullType(Headless.id(name))
         val block = Registries.BLOCK.register(
             Headless.id("${name}_skull"),
@@ -37,8 +38,10 @@ object ExampleSkulls {
             HeadlessWallSkull(skull, AbstractBlock.Settings.copy(block))
         )
         val item = Registries.ITEM.register(Headless.id("${name}_skull"), SkullItem(block, wallBlock, Item.Settings()))
-        items.add(item)
-        return SkullData(skull, block, wallBlock, item)
+
+        val data = SkullData(skull, block, wallBlock, item)
+        skulls.add(data)
+        return data
     }
 
     data class SkullData(val skull: HeadlessSkullType, val block: Block, val wallBlock: Block, val item: Item)

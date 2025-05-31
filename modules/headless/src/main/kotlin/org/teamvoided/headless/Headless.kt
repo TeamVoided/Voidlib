@@ -13,7 +13,8 @@ object Headless {
     val log: Logger = LoggerFactory.getLogger(Headless::class.simpleName)
 
     fun init() {
-       if (isDev()) ExampleSkulls.init()
+        if (isDev()) ExampleSkulls.init()
     }
+
     fun id(path: String) = Identifier.of(MODID, path)
 }
