@@ -8,7 +8,7 @@ val id = "voidmill"
 modSettings {
     modId(id)
     modName("Voidmill")
-    modVersion = "1.0.5"
+    modVersion = "1.0.6"
     modDescription = "A helpful tool for making wood and wood related things"
     mixinFile("${id}.mixin.json")
 }
