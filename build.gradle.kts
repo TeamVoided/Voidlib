@@ -28,17 +28,19 @@ allprojects {
     loom {
         runs {
             named("client") {
+                ideConfigGenerated(false)
                 programArgs("--username", username)
                 uuid?.let { programArgs("--uuid", uuid) }
             }
 
             create("TestWorld") {
                 client()
-                ideConfigGenerated(true)
+                ideConfigGenerated(false)
                 runDir("run")
                 programArgs("--quickPlaySingleplayer", "test", "--username", username)
                 uuid?.let { programArgs("--uuid", uuid) }
             }
+
             runConfigs.forEach { it.ideConfigGenerated(false) }
         }
     }
