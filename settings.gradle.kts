@@ -18,14 +18,15 @@ dependencyResolutionManagement {
 
 rootProject.name = "Voidlib"
 
-include("voidmill")
-project(":voidmill").projectDir = file("modules/voidmill")
-
-include("voidcore")
-project(":voidcore").projectDir = file("modules/voidcore")
-
-include("vtags")
-project(":vtags").projectDir = file("modules/vtags")
-
+val modules = listOf(
+    "headless",
+    "voidcore",
+    "voidmill",
+    "vtags"
+)
+for (module in modules) {
+    include(module)
+    project(":$module").projectDir = file("modules/$module")
+}
 
 

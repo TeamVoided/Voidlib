@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "org.teamvoided.headless.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "SkullBlockEntityRendererAccessor",
+    "SkullBlockEntityRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "mixins": [
+  ]
+}

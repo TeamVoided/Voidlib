@@ -4,9 +4,9 @@ plugins {
     alias(libs.plugins.iridium)
     alias(libs.plugins.iridium.publish)
 }
+
 val username = "vDev"
 val uuid: String? = null
-
 
 allprojects {
     repositories {
