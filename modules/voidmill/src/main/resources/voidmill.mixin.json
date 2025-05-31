@@ -4,7 +4,6 @@
   "package": "org.teamvoided.voidmill.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "BlockEntityTypeMixin"
   ],
   "client": [
   ],
