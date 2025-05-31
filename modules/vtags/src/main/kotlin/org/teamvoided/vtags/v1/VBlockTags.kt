@@ -1,7 +1,7 @@
 package org.teamvoided.vtags.v1
 
 import net.minecraft.registry.RegistryKeys
-import org.teamvoided.voidcore.helpers.tag
+import org.teamvoided.voidcore.helpers.mc.tag
 import org.teamvoided.vtags.VTags.id
 
 

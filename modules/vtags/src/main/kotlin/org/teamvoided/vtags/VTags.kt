@@ -1,7 +1,7 @@
 package org.teamvoided.vtags
 
 import org.slf4j.LoggerFactory
-import org.teamvoided.voidcore.helpers.createId
+import org.teamvoided.voidcore.helpers.mc.createId
 
 @Suppress("unused")
 object VTags {
