@@ -4,9 +4,15 @@
   "package": "org.teamvoided.voidlib.mixin.client",
   "compatibilityLevel": "JAVA_21",
   "client": [
-    "AbstractContainerScreenMixin"
+    "AbstractContainerScreenMixin",
+    "api.context.CreativeModeInventoryScreenMixin",
+    "api.context.ScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1
-  }
+  },
+  "mixins": [
+    "api.context.TooltipContextImplMixin",
+    "api.context.TooltipContextMixin"
+  ]
 }
