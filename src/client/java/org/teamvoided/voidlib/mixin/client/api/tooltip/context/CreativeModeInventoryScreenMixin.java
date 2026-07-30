@@ -21,4 +21,5 @@ public class CreativeModeInventoryScreenMixin extends Screen {
         ((VoidlibTooltipContextImpl) original).voidlib_setCurrentScreen(this);
         return original;
     }
+
 }

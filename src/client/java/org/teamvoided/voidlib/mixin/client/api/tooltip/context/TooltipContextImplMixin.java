@@ -27,4 +27,5 @@ public abstract class TooltipContextImplMixin implements VoidlibTooltipContextIm
     public void voidlib_setCurrentScreen(@Nullable Screen screen) {
         vanillium$currentScreen = screen;
     }
+
 }

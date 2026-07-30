@@ -11,7 +11,7 @@ import org.teamvoided.voidlib.client.impl.item.VoidlibTooltipContextImpl;
 @Mixin(Screen.class)
 public class ScreenMixin {
     @ModifyExpressionValue(method = "getTooltipFromItem", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/Item$TooltipContext;of(Lnet/minecraft/world/level/Level;)Lnet/minecraft/world/item/Item$TooltipContext;"))
-   private static Item.TooltipContext addExtraContext(Item.TooltipContext original) {
+    private static Item.TooltipContext addExtraContext(Item.TooltipContext original) {
         ((VoidlibTooltipContextImpl) original).voidlib_setCurrentScreen(Minecraft.getInstance().screen);
         return original;
     }
