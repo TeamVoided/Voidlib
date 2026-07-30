@@ -5,7 +5,7 @@ import org.teamvoided.voidlib.Voidlib.id
 
 interface CustomSlotBackground {
 
-    fun getBackground(): Identifier
+    fun getBackground(): Identifier?
 
     @Suppress("unused")
     companion object {

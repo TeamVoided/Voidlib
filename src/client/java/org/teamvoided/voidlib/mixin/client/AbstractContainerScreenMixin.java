@@ -1,5 +1,7 @@
 package org.teamvoided.voidlib.mixin.client;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.RenderPipelines;
@@ -16,7 +18,10 @@ public class AbstractContainerScreenMixin {
     @Inject(method = "renderSlot", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;isEmpty()Z", ordinal = 5))
     void addSlotBackgrounds(GuiGraphics guiGraphics, Slot slot, int i, int j, CallbackInfo ci) {
         if (slot instanceof CustomSlotBackground bSlot) {
-            guiGraphics.blitSprite(RenderPipelines.GUI_TEXTURED, bSlot.getBackground(), slot.x - 1, slot.y - 1, 18, 18);
+            var sprite = bSlot.getBackground();
+            if (sprite != null) {
+                guiGraphics.blitSprite(RenderPipelines.GUI_TEXTURED, bSlot.getBackground(), slot.x - 1, slot.y - 1, 18, 18);
+            }
         }
     }
 
