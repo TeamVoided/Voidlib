@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.teamvoided.voidlib.inventory.slot.CustomSlotBackground;
+import org.teamvoided.voidlib.api.inventory.slot.CustomSlotBackground;
 
 @Mixin(AbstractContainerScreen.class)
 public class AbstractContainerScreenMixin {

@@ -1,4 +1,4 @@
-package org.teamvoided.voidlib.inventory.slot
+package org.teamvoided.voidlib.api.inventory.slot
 
 import net.minecraft.resources.Identifier
 import org.teamvoided.voidlib.Voidlib.id
