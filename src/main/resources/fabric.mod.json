@@ -9,24 +9,24 @@
     "main": [
       {
         "adapter": "kotlin",
-        "value": "org.teamvoided.template.Template::init"
+        "value": "org.teamvoided.voidlib.Voidlib::init"
       }
     ],
     "client": [
       {
         "adapter": "kotlin",
-        "value": "org.teamvoided.template.client.TemplateClient::init"
+        "value": "org.teamvoided.voidlib.client.VoidlibClient::init"
       }
     ]
   },
   "mixins": [
-    "template.mixins.json",
+    "voidlib.mixins.json",
     {
-      "config": "template.client.mixins.json",
+      "config": "voidlib.client.mixins.json",
       "environment": "client"
     }
   ],
-  "accessWidener": "template.classtweaker",
+  "accessWidener": "voidlib.classtweaker",
   "depends": {
     "java": ">=${java}",
     "minecraft": "${version_range}",
@@ -42,5 +42,5 @@
     "discord": "${discord_invite}"
   },
   "license": "${license}",
-  "icon": "assets/template/icon.png"
+  "icon": "assets/voidlib/icon.png"
 }

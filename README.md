@@ -1,2 +1,2 @@
-# The TeamVoided Template
-Template mod by TeamVoided
+# Voidlib
+This one is real now!

@@ -7,9 +7,11 @@
     "fabric-datagen": [
       {
         "adapter": "kotlin",
-        "value": "org.teamvoided.template.datagen.TemplateData"
+        "value": "org.teamvoided.voidlib.datagen.VoidlibData"
       }
     ]
   },
-  "mixins": [ "template.datagen.mixins.json" ]
+  "mixins": [
+    "voidlib.datagen.mixins.json"
+  ]
 }
