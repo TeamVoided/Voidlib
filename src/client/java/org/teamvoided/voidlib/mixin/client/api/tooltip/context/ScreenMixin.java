@@ -1,4 +1,4 @@
-package org.teamvoided.voidlib.mixin.client.api.context;
+package org.teamvoided.voidlib.mixin.client.api.tooltip.context;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.minecraft.client.Minecraft;

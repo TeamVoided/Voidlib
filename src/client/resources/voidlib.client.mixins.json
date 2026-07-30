@@ -5,14 +5,12 @@
   "compatibilityLevel": "JAVA_21",
   "client": [
     "AbstractContainerScreenMixin",
-    "api.context.CreativeModeInventoryScreenMixin",
-    "api.context.ScreenMixin"
+    "api.tooltip.context.CreativeModeInventoryScreenMixin",
+    "api.tooltip.context.ScreenMixin",
+    "api.tooltip.context.TooltipContextImplMixin",
+    "api.tooltip.context.TooltipContextMixin"
   ],
   "injectors": {
     "defaultRequire": 1
-  },
-  "mixins": [
-    "api.context.TooltipContextImplMixin",
-    "api.context.TooltipContextMixin"
-  ]
+  }
 }

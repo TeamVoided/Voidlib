@@ -1,4 +1,4 @@
-package org.teamvoided.voidlib.mixin.client.api.context;
+package org.teamvoided.voidlib.mixin.client.api.tooltip.context;
 
 import net.minecraft.world.item.Item;
 import org.spongepowered.asm.mixin.Mixin;

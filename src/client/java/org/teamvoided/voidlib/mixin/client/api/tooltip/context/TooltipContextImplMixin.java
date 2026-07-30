@@ -1,4 +1,4 @@
-package org.teamvoided.voidlib.mixin.client.api.context;
+package org.teamvoided.voidlib.mixin.client.api.tooltip.context;
 
 import net.minecraft.client.gui.screens.Screen;
 import org.jetbrains.annotations.Nullable;
@@ -17,6 +17,7 @@ public abstract class TooltipContextImplMixin implements VoidlibTooltipContextIm
     @Unique
     private @Nullable Screen vanillium$currentScreen = null;
 
+    @SuppressWarnings("AddedMixinMembersNamePattern")
     @Override
     public @Nullable Screen getCurrentScreen() {
         return vanillium$currentScreen;
