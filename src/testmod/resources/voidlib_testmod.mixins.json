@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "org.teamvoided.voidlib.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "force_sync.AbstractContainerMenuMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

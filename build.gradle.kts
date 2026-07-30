@@ -1,5 +1,6 @@
 @file:Suppress("PropertyName", "VariableNaming")
 
+import net.fabricmc.loom.task.RemapJarTask
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
@@ -32,6 +33,21 @@ repositories {
     mavenCentral()
 }
 
+sourceSets {
+    create("testmod") {
+        for (x in sourceSets) {
+            println(x.name)
+        }
+        compileClasspath += sourceSets.main.get().compileClasspath
+        runtimeClasspath += sourceSets.main.get().runtimeClasspath
+    }
+}
+
+@Suppress("SpellCheckingInspection")
+val testmodImplementation by configurations.getting {
+    extendsFrom(configurations.implementation.get())
+}
+
 dependencies {
     modImplementation(fileTree("libs"))
 
@@ -49,6 +65,7 @@ dependencies {
 //    modLocalRuntime(libs.emi)
     // Testing
     modImplementation(libs.bundles.cw)
+    testmodImplementation(sourceSets.main.get().output)
 }
 
 val username = "vDev"
@@ -83,6 +100,13 @@ loom {
             uuid?.let { programArgs("--uuid", it) }
         }
 
+        create("testmod") {
+            client()
+            source(sourceSets["testmod"])
+            programArgs("--quickPlaySingleplayer", "test", "--username", username)
+            uuid?.let { programArgs("--uuid", it) }
+        }
+
         forEach {
             it.ideConfigGenerated(false)
             it.vmArgs(
@@ -110,7 +134,25 @@ fabricApi {
     }
 }
 
+val testmodJar = tasks.register("testmodJar", Jar::class) {
+    from(sourceSets["testmod"].output)
+    destinationDirectory = File(project.layout.buildDirectory.get().asFile, "testmod")
+    archiveClassifier = "testmod"
+}
+
+val remapTestmodJar = tasks.register("remapTestmodJar", RemapJarTask::class) {
+    dependsOn(testmodJar.get())
+    input.set(testmodJar.get().archiveFile)
+    archiveClassifier = "testmod"
+    addNestedDependencies = false
+}
+
 tasks {
+
+    build {
+        dependsOn(remapTestmodJar.get())
+    }
+
     val javaVersion = libs.versions.java.get()
     withType<JavaCompile> {
         options.encoding = "UTF-8"
@@ -124,6 +166,13 @@ tasks {
     java {
         toolchain.languageVersion.set(JavaLanguageVersion.of(JavaVersion.toVersion(javaVersion).toString()))
         withSourcesJar()
+    }
+
+    sourceSets {
+        getByName("testmod"){
+            compileClasspath += sourceSets.getByName("client").compileClasspath
+           runtimeClasspath += sourceSets.getByName("client").runtimeClasspath
+        }
     }
 
     sourceSets.forEach { set ->
