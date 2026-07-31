@@ -1,7 +1,7 @@
 mod_name = "Voidlib"
 mod_id = "voidlib"
 mod_group = "org.teamvoided"
-mod_version = "0.1.0+1.21.11"
+mod_version = "0.1.0-alpha.1+1.21.11"
 mod_description = "This one is real now!"
 github_repo = "Teamvoided/Voidlib"
 discord_invite = "https://discord.gg/KZ5Q364hEg"
