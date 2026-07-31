@@ -6,7 +6,8 @@ import org.teamvoided.voidlib.util.tag
 
 object VBlockTags {
 
-//    val BLOCK_TAG = create("block_tag")
+    @JvmField
+    val INSTAMINE_WITH_TOOL = create("instamine_with_tool")
 
     fun create(id: String) = Registries.BLOCK.tag(id(id))
 

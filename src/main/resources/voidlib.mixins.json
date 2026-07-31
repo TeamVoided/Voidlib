@@ -4,6 +4,7 @@
   "package": "org.teamvoided.voidlib.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "BlockBehaviourMixin",
     "events.ItemStackMixin",
     "force_sync.AbstractContainerMenuAccessor",
     "force_sync.ServerGamePacketListenerImplMixin"
