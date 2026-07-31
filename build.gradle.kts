@@ -43,31 +43,6 @@ sourceSets {
     }
 }
 
-@Suppress("SpellCheckingInspection")
-val testmodImplementation by configurations.getting {
-    extendsFrom(configurations.implementation.get())
-}
-
-dependencies {
-    modImplementation(fileTree("libs"))
-
-    minecraft(libs.minecraft)
-    mappings(loom.officialMojangMappings())
-    // Dependencies
-    modImplementation(libs.fabric.loader)
-    modImplementation(libs.fabric.api)
-    modImplementation(libs.fabric.kotlin)
-    modImplementation(libs.fzzy.config)
-    // Compatibility
-    // Runtime
-    modImplementation(libs.modmenu)
-//    modCompileOnly(variantOf(libs.emi) { classifier("api") })
-//    modLocalRuntime(libs.emi)
-    // Testing
-    modImplementation(libs.bundles.cw)
-    testmodImplementation(sourceSets.main.get().output)
-}
-
 val username = "vDev"
 val uuid = iridium.fetchUUID(username) // Dev & vDev will always be null
 
@@ -133,6 +108,34 @@ fabricApi {
         strictValidation = false
     }
 }
+
+
+@Suppress("SpellCheckingInspection")
+val testmodImplementation by configurations.getting {
+    extendsFrom(configurations.implementation.get())
+}
+
+dependencies {
+    modImplementation(fileTree("libs"))
+
+    minecraft(libs.minecraft)
+    mappings(loom.officialMojangMappings())
+    // Dependencies
+    modImplementation(libs.fabric.loader)
+    modImplementation(libs.fabric.api)
+    modImplementation(libs.fabric.kotlin)
+    modImplementation(libs.fzzy.config)
+    // Compatibility
+    // Runtime
+    modImplementation(libs.modmenu)
+//    modCompileOnly(variantOf(libs.emi) { classifier("api") })
+//    modLocalRuntime(libs.emi)
+    // Testing
+    modImplementation(libs.bundles.cw)
+    testmodImplementation(sourceSets.main.get().output)
+    testmodImplementation(sourceSets.getByName("client").output)
+}
+
 
 val testmodJar = tasks.register("testmodJar", Jar::class) {
     from(sourceSets["testmod"].output)
