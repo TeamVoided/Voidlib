@@ -6,15 +6,15 @@ import net.minecraft.network.chat.Component
 import net.minecraft.network.chat.MutableComponent
 import net.minecraft.resources.ResourceKey
 import net.minecraft.world.entity.decoration.painting.PaintingVariant
-import org.teamvoided.voidlib.data.registry.VPaintings
 import java.util.*
 
 object Paintings : RegistryBootstrapper<PaintingVariant> {
 
     override fun BootstrapContext<PaintingVariant>.init() {
-        painting(VPaintings.QUESTIONABLE, 1, 1, true)
+//        painting(VPaintings.QUESTIONABLE, 1, 1, true)
     }
 
+    @Suppress("unused")
     fun BootstrapContext<PaintingVariant>.painting(
         key: ResourceKey<PaintingVariant>,
         width: Int,
