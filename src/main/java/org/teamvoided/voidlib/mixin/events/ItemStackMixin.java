@@ -4,6 +4,8 @@ package org.teamvoided.voidlib.mixin.events;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import com.llamalad7.mixinextras.sugar.Share;
+import com.llamalad7.mixinextras.sugar.ref.LocalRef;
 import net.fabricmc.fabric.api.util.TriState;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -17,14 +19,19 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.teamvoided.voidlib.api.events.InventoryItemEvents;
 import org.teamvoided.voidlib.api.events.PostUseItemEvents;
 
 @Mixin(ItemStack.class)
-public class ItemStackMixin {
+public abstract class ItemStackMixin {
+
+    @Shadow
+    public abstract ItemStack copy();
 
     @ModifyReturnValue(method = "use", at = @At("RETURN"))
     private InteractionResult postUseHook(InteractionResult original, Level level, Player player, InteractionHand hand) {
@@ -41,9 +48,14 @@ public class ItemStackMixin {
         return PostUseItemEvents.POST_USE_ON_ENTITY.invoker().interact(original, user, entity, hand);
     }
 
+    @Inject(method = "finishUsingItem", at = @At("HEAD"))
+    private void finishUsingItemCopy(Level level, LivingEntity livingEntity, CallbackInfoReturnable<ItemStack> cir, @Share("stackRefForPostHook") LocalRef<ItemStack> stackLocalRef) {
+        stackLocalRef.set(copy());
+    }
+
     @ModifyReturnValue(method = "finishUsingItem", at = @At("RETURN"))
-    private ItemStack postFinishUsingHook(ItemStack original, Level level, LivingEntity user) {
-        return PostUseItemEvents.POST_FINISH_USING.invoker().interact(original, (ItemStack) (Object) this, level, user);
+    private ItemStack postFinishUsingHook(ItemStack original, Level level, LivingEntity user, @Share("stackRefForPostHook") LocalRef<ItemStack> stackLocalRef) {
+        return PostUseItemEvents.POST_FINISH_USING.invoker().interact(original, stackLocalRef.get(), level, user);
     }
 
     @Inject(method = "releaseUsing", at = @At("RETURN"))

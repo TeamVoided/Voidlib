@@ -64,10 +64,10 @@ object PostUseItemEvents {
     @JvmField
     val POST_FINISH_USING: Event<PostUsingItemCallback> =
         createArrayBacked(PostUsingItemCallback::class.java) { listeners ->
-            PostUsingItemCallback { originalResultStack, usedSTack, level, player ->
+            PostUsingItemCallback { originalResultStack, usedStack, level, player ->
                 var modifiedStack = originalResultStack
                 for (callback in listeners) {
-                    modifiedStack = callback.interact(modifiedStack, usedSTack, level, player)
+                    modifiedStack = callback.interact(modifiedStack, usedStack, level, player)
                 }
                 modifiedStack
             }
