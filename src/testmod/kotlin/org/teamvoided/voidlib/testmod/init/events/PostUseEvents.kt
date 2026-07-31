@@ -66,7 +66,7 @@ fun postUseOnBlock(result: InteractionResult, ctx: UseOnContext): InteractionRes
         SoundEvents.ANCIENT_DEBRIS_BREAK, SoundSource.NEUTRAL,
         0.5f, 0.4f / (level.getRandom().nextFloat() * 0.4f + 0.8f)
     )
-    if (level.random.nextInt(0, 5) == 0) {
+    if (!level.isClientSide) if (level.random.nextInt(0, 5) == 0) {
         stack.consume(1, ctx.player)
         level.playSound(
             null,
