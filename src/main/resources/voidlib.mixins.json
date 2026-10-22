@@ -6,8 +6,7 @@
   "mixins": [
     "BlockBehaviourMixin",
     "events.ItemStackMixin",
-    "force_sync.AbstractContainerMenuAccessor",
-    "force_sync.ServerGamePacketListenerImplMixin"
+    "AbstractContainerMenuMixin"
   ],
   "injectors": {
     "defaultRequire": 1

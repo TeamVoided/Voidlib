@@ -1,4 +1,4 @@
-package org.teamvoided.voidlib.mixin.force_sync;
+package org.teamvoided.voidlib.mixin.testmod;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;

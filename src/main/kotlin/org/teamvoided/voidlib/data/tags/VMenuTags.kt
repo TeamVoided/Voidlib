@@ -6,9 +6,6 @@ import org.teamvoided.voidlib.util.tag
 
 object VMenuTags {
 
-    @JvmField
-    val FORCE_SYNC_AFTER_CLOSE = create("force_sync_after_close")
-
     fun create(id: String) = Registries.MENU.tag(id(id))
 
 }
