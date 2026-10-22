@@ -6,6 +6,7 @@ import net.minecraft.ChatFormatting
 import net.minecraft.network.chat.Component
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.teamvoided.voidlib.client.util.getCurrentScreen
 import org.teamvoided.voidlib.testmod.init.VEvents
 
 object VTest : ModInitializer {
@@ -20,7 +21,7 @@ object VTest : ModInitializer {
         VEvents.init()
 
         ItemTooltipCallback.EVENT.register { stack, ctx, flags, tooltips ->
-            val screen = ctx.getCurrentScreen()
+            val screen = getCurrentScreen()
             if (flags.isAdvanced && screen != null) tooltips.add(
                 Component.literal("Screen: ${screen.javaClass.simpleName}").withStyle(ChatFormatting.DARK_GRAY)
             )

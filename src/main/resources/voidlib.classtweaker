@@ -1,3 +1,2 @@
 classTweaker v2 named
 
-transitive-inject-interface net/minecraft/world/item/Item$TooltipContext org/teamvoided/voidlib/client/api/item/VoidlibTooltipContext
