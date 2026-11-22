@@ -1,8 +1,8 @@
 # see https://fabricmc.net/develop/ for new versions
 [versions]
     java = "21"
-    kotlin = "2.3.21"
-    fabric_loom = "1.16-SNAPSHOT"
+    kotlin = "2.4.21"
+    fabric_loom = "1.18-SNAPSHOT"
     iridium = "4.0.0"
     # Dependencies
     minecraft = "1.21.11"

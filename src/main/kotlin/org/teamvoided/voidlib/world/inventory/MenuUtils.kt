@@ -1,4 +1,4 @@
-package org.teamvoided.voidlib.util
+package org.teamvoided.voidlib.world.inventory
 
 import net.minecraft.core.Holder
 import net.minecraft.core.registries.BuiltInRegistries

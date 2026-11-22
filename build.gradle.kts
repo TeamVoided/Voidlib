@@ -14,8 +14,6 @@ plugins {
 
 repositories {
     maven("https://maven.fabricmc.net/")
-    maven("https://teamvoided.org/releases") { content { includeGroup("org.teamvoided") } }
-    maven("https://teamvoided.org/snapshots") { content { includeGroup("org.teamvoided") } }
     maven("https://maven.fzzyhmstrs.me/") { name = "FzzyMaven"; content { includeGroup("me.fzzyhmstrs") } }
     maven("https://maven.terraformersmc.com/") { // ModMenu, EMI
         name = "Terraformers"
@@ -31,13 +29,12 @@ repositories {
     maven("https://api.modrinth.com/maven") { content { includeGroup("maven.modrinth") } }
     mavenLocal()
     mavenCentral()
+    maven("https://teamvoided.org/releases") { content { includeGroup("org.teamvoided") } }
+    maven("https://teamvoided.org/snapshots") { content { includeGroup("org.teamvoided") } }
 }
 
 sourceSets {
     create("testmod") {
-        for (x in sourceSets) {
-            println(x.name)
-        }
         compileClasspath += sourceSets.main.get().compileClasspath
         runtimeClasspath += sourceSets.main.get().runtimeClasspath
     }
@@ -59,32 +56,35 @@ loom {
 
     runs {
         named("client") {
-            programArgs("--username", username)
-            uuid?.let { programArgs("--uuid", it) }
+            runDirectory = File("run")
+            programArguments.addAll("--username", username)
+            uuid?.let { programArguments.addAll("--uuid", it) }
         }
 
         create("randomClient") {
             client()
-            runDir("run")
+            runDirectory = File("run")
         }
 
         create("TestWorld") {
             client()
-            runDir("run")
-            programArgs("--quickPlaySingleplayer", "test", "--username", username)
-            uuid?.let { programArgs("--uuid", it) }
+            runDirectory = File("run")
+            programArguments.addAll("--quickPlaySingleplayer", "test", "--username", username)
+            uuid?.let { programArguments.addAll("--uuid", it) }
         }
 
         create("testmod") {
             client()
-            source(sourceSets["testmod"])
-            programArgs("--quickPlaySingleplayer", "test", "--username", username)
-            uuid?.let { programArgs("--uuid", it) }
+            runDirectory = File("run")
+            sourceSet.set(sourceSets["testmod"].name)
+            programArguments.addAll("--quickPlaySingleplayer", "test", "--username", username)
+            uuid?.let { programArguments.addAll("--uuid", it) }
         }
 
         forEach {
-            it.ideConfigGenerated(false)
-            it.vmArgs(
+            it.generateRunConfig = true
+            it.preferGradleTask = true
+            it.jvmArguments.addAll(
                 // If enabled this you can hotswap basally anything
                 // Requires a JetBrains runtime!
                 "-XX:+AllowEnhancedClassRedefinition",
@@ -180,8 +180,8 @@ tasks {
 
     sourceSets.forEach { set ->
         named<ProcessResources>(set.processResourcesTaskName) {
-            var expandProps = iridium.props.toMutableMap()
-            iridium.appendLibsVersionProps(expandProps, File("libs.versions.toml"))
+            val expandProps = iridium.props.toMutableMap()
+            iridium.appendLibsVersionProps(expandProps, projectDir.resolve("libs.versions.toml"))
             filesMatching(
                 listOf("pack.mcmeta", "fabric.mod.json", "META-INF/mods.toml", "META-INF/neoforge.mods.toml")
             ) {
@@ -204,7 +204,7 @@ uploadScript {
     modrinthId = "id"
     curseId = "0"
 
-    changelog = File("changelog.md").readText()
+    changelog = projectDir.resolve("changelog.md").readText()
 
     version += libs.versions.minecraft.get()
     versionName = "${iridium.modName()} ${iridium.modVersion}"

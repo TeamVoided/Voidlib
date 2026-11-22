@@ -7,8 +7,8 @@ import org.teamvoided.voidlib.api.inventory.slot.CustomSlotBackground
 
 class BgSlot(container: Container, i: Int, j: Int, k: Int) : Slot(container, i, j, k), CustomSlotBackground {
 
-    override fun getBackground(): Identifier =
-        if (item.isEmpty) CustomSlotBackground.EMPTY_SLOT
-        else CustomSlotBackground.OUTSET_SLOT
+    override fun getBackground(): Identifier {
+        return if (item.isEmpty) CustomSlotBackground.EMPTY_SLOT else CustomSlotBackground.OUTSET_SLOT
+    }
 
 }
