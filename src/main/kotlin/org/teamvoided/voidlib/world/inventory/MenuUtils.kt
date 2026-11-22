@@ -6,11 +6,11 @@ import net.minecraft.world.inventory.AbstractContainerMenu
 import net.minecraft.world.inventory.MenuType
 
 fun getType(menu: AbstractContainerMenu): MenuType<*>? {
-    try {
-        return menu.type
-    } catch (_: Exception) {
+    return try {
+        menu.type
+    } catch (_: UnsupportedOperationException) {
+        null
     }
-    return null
 }
 
 fun getTypeHolder(menu: AbstractContainerMenu): Holder<MenuType<*>>? {
