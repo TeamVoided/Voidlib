@@ -14,7 +14,7 @@ import net.minecraft.world.level.Level
 object PostUseItemEvents {
 
     /**
-     * Callback that runs when {@link ItemStack#use(Level, Player, InteractionHand)} returns.
+     * Callback that runs when [ItemStack.use] returns.
      */
     @JvmField
     val POST_USE: Event<PostUseItemCallback> = createArrayBacked(PostUseItemCallback::class.java) { listeners ->
@@ -25,7 +25,7 @@ object PostUseItemEvents {
     }
 
     /**
-     * Callback that runs when {@link ItemStack#useOn(UseOnContext)} returns.
+     * Callback that runs when [ItemStack.useOn] returns.
      */
     @JvmField
     val POST_USE_ON_BLOCK: Event<PostUseOnBlockItemCallback> =
@@ -43,7 +43,7 @@ object PostUseItemEvents {
 
 
     /**
-     * Callback that runs when {@link ItemStack#interactLivingEntity(Player, LivingEntity, InteractionHand)} returns.
+     * Callback that runs when [ItemStack.interactLivingEntity] returns.
      */
     @JvmField
     val POST_USE_ON_ENTITY: Event<PostUseOnEntityItemCallback> =
@@ -60,7 +60,7 @@ object PostUseItemEvents {
         }
 
     /**
-     * Callback that runs when {@link ItemStack#finishUsingItem(Level, LivingEntity)} returns.
+     * Callback that runs when [ItemStack.finishUsingItem] returns.
      */
     @JvmField
     val POST_FINISH_USING: Event<PostUsingItemCallback> =
@@ -75,7 +75,7 @@ object PostUseItemEvents {
         }
 
     /**
-     * Callback that runs when {@link ItemStack#releaseUsing(Level, LivingEntity, int)} returns.
+     * Callback that runs when [ItemStack.releaseUsing] returns.
      */
     @JvmField
     val POST_RELEASE_USING: Event<PostStopUsingItemCallback> =

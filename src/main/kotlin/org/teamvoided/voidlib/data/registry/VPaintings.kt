@@ -6,6 +6,9 @@ import org.teamvoided.voidlib.util.key
 
 object VPaintings {
 
+    /**
+     * ???
+     */
     val QUESTIONABLE = create("questionable")
 
     fun create(id: String) = Registries.PAINTING_VARIANT.key(Voidlib.id(id))

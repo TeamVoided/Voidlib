@@ -14,7 +14,7 @@ object InventoryItemEvents {
     /**
      * Callback for right-clicking on item from cursor.
      *
-     * Returning {@link net.fabricmc.fabric.api.util.TriState#DEFAULT} will pass to vanilla behavior
+     * Returning [TriState.DEFAULT] will pass to vanilla behavior
      */
     @JvmField
     val ON_CLICKED_ON_OTHER: Event<OnClickedOnOtherCallback> =
@@ -33,7 +33,7 @@ object InventoryItemEvents {
     /**
      * Callback for right-clicking on item in slot.
      *
-     * Returning {@link net.fabricmc.fabric.api.util.TriState#DEFAULT} will pass to vanilla behavior
+     * Returning [TriState.DEFAULT] will pass to vanilla behavior
      *
      */
     @JvmField

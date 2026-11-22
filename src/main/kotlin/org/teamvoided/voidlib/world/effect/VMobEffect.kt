@@ -4,6 +4,9 @@ import net.minecraft.core.particles.ParticleOptions
 import net.minecraft.world.effect.MobEffect
 import net.minecraft.world.effect.MobEffectCategory
 
+/**
+ * Simple wrapper for [MobEffect] that has public constructors.
+ */
 class VMobEffect : MobEffect {
 
     constructor(category: MobEffectCategory, color: Int) : super(category, color)
