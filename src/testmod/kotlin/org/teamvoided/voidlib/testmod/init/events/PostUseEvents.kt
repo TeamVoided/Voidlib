@@ -2,33 +2,32 @@
 
 package org.teamvoided.voidlib.testmod.init.events
 
-import net.minecraft.core.component.DataComponents
-import net.minecraft.core.registries.Registries
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.sounds.SoundEvents
 import net.minecraft.sounds.SoundSource
 import net.minecraft.stats.Stats
 import net.minecraft.world.InteractionHand
 import net.minecraft.world.InteractionResult
+import net.minecraft.world.InteractionResultHolder
 import net.minecraft.world.effect.MobEffectInstance
 import net.minecraft.world.effect.MobEffects
+import net.minecraft.world.entity.EntityType
 import net.minecraft.world.entity.LivingEntity
-import net.minecraft.world.entity.animal.cow.Cow
+import net.minecraft.world.entity.animal.Cow
 import net.minecraft.world.entity.player.Player
-import net.minecraft.world.entity.projectile.Projectile
-import net.minecraft.world.entity.projectile.hurtingprojectile.SmallFireball
+import net.minecraft.world.entity.projectile.SmallFireball
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.Items
-import net.minecraft.world.item.SnowballItem
 import net.minecraft.world.item.context.UseOnContext
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.Block
+import net.minecraft.world.phys.Vec3
 
 fun postUse(
-    result: InteractionResult, stack: ItemStack, level: Level, player: Player, hand: InteractionHand,
-): InteractionResult {
-    if (result != InteractionResult.PASS) return InteractionResult.PASS
-    if (!stack.`is`(Items.FIRE_CHARGE)) return InteractionResult.PASS
+    result: InteractionResultHolder<ItemStack>, stack: ItemStack, level: Level, player: Player, hand: InteractionHand,
+): InteractionResultHolder<ItemStack> {
+    if (result.result != InteractionResult.PASS) return InteractionResultHolder.pass(stack)
+    if (!stack.`is`(Items.FIRE_CHARGE)) return InteractionResultHolder.pass(stack)
 
     level.playSound(
         null,
@@ -36,16 +35,15 @@ fun postUse(
         SoundEvents.FIRECHARGE_USE, SoundSource.NEUTRAL,
         0.5f, 0.4f / (level.getRandom().nextFloat() * 0.4f + 0.8f)
     )
-    if (level is ServerLevel) Projectile.spawnProjectileFromRotation(
-        { server, living, stack ->
-            val smallFireball = SmallFireball(level, living.x, living.eyePosition.y, living.z, living.lookAngle)
-            smallFireball.item = stack
-            smallFireball
-        }, level, stack, player, 0.0f, SnowballItem.PROJECTILE_SHOOT_POWER, 1.0f
-    )
+    if (level is ServerLevel) {
+        val fireball = SmallFireball(level, player, Vec3(1.0, 1.0,1.0))
+        fireball.item = stack
+        fireball.shootFromRotation(player, player.xRot, player.yRot, 0.0f, 1.5f, 1.0f)
+        level.addFreshEntity(fireball)
+    }
     player.awardStat(Stats.ITEM_USED.get(stack.item))
     stack.consume(1, player)
-    return InteractionResult.SUCCESS
+    return InteractionResultHolder.success(stack)
 }
 
 fun postUseOnBlock(result: InteractionResult, ctx: UseOnContext): InteractionResult {
@@ -71,7 +69,7 @@ fun postUseOnBlock(result: InteractionResult, ctx: UseOnContext): InteractionRes
         level.playSound(
             null,
             playPos.x + 0.5, playPos.y + 0.5, playPos.z + 0.5,
-            stack[DataComponents.BREAK_SOUND]!!.value(), SoundSource.NEUTRAL,
+            SoundEvents.ITEM_BREAK, SoundSource.NEUTRAL,
             0.5f, 0.4f
         )
     }
@@ -97,7 +95,7 @@ fun postUseOnEntity(
         0.5f, 0.4f / (level.getRandom().nextFloat() * 0.4f + 0.8f)
     )
     if (level is ServerLevel) {
-        target.variant = level.registryAccess().lookupOrThrow(Registries.COW_VARIANT).getRandom(level.random).get()
+        target.convertTo(EntityType.MOOSHROOM, true)
     }
     player.awardStat(Stats.ITEM_USED.get(stack.item))
     stack.consume(1, player)
@@ -119,6 +117,6 @@ fun postFinishUsing(resultStack: ItemStack, usedStack: ItemStack, level: Level, 
 fun postReleaseUsing(usedStack: ItemStack, level: Level, user: LivingEntity, remainingTime: Int) {
     if (!usedStack.`is`(Items.BOW)) return
     if (user is Player) {
-        user.cooldowns.addCooldown(usedStack, Items.BOW.getUseDuration(usedStack, user) - remainingTime)
+        user.cooldowns.addCooldown(usedStack.item, Items.BOW.getUseDuration(usedStack, user) - remainingTime)
     }
 }

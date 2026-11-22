@@ -4,10 +4,13 @@ import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback
 import net.minecraft.ChatFormatting
 import net.minecraft.network.chat.Component
+import net.minecraft.network.chat.MutableComponent
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.teamvoided.voidlib.client.util.getCurrentScreen
+import org.teamvoided.voidlib.client.util.getMenu
 import org.teamvoided.voidlib.testmod.init.VEvents
+import org.teamvoided.voidlib.world.inventory.getTypeHolder
 
 object VTest : ModInitializer {
 
@@ -20,12 +23,23 @@ object VTest : ModInitializer {
         log.info("Test modding: $MODID!")
         VEvents.init()
 
-        ItemTooltipCallback.EVENT.register { stack, ctx, flags, tooltips ->
+        ItemTooltipCallback.EVENT.register { _, _, flags, tooltips ->
             val screen = getCurrentScreen()
-            if (flags.isAdvanced && screen != null) tooltips.add(
-                Component.literal("Screen: ${screen.javaClass.simpleName}").withStyle(ChatFormatting.DARK_GRAY)
-            )
+            if (flags.isAdvanced && screen != null) {
+                tooltips.addAll(
+                    buildList {
+                        add(text("Screen: ${screen.javaClass.simpleName}"))
+                        getMenu(screen)?.let {
+                            add(text("Menu: ${it.javaClass.simpleName}"))
+                            getTypeHolder(it)?.let { holder -> add(text("Menu Type: $holder")) }
+                        }
+                    }
+                )
+            }
         }
     }
+
+    private fun text(message: String): MutableComponent? =
+        Component.literal(message).withStyle(ChatFormatting.DARK_GRAY)
 
 }

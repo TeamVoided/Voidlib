@@ -17,13 +17,9 @@ fun onClickedOnOther(self: ItemStack, slot: Slot, clickAction: ClickAction, play
     if (!self.`is`(Items.DIAMOND)) return TriState.DEFAULT
 
     val slotItem = slot.item
-    val model = Items.DIAMOND.defaultInstance[DataComponents.ITEM_MODEL]
-
-    if (slotItem[DataComponents.ITEM_MODEL] == model) {
-        slotItem.copyFrom(DataComponents.ITEM_MODEL, slotItem.prototype)
-    } else {
-        slotItem[DataComponents.ITEM_MODEL] = model
-    }
+    val model = Items.DIAMOND.defaultInstance[DataComponents.ITEM_NAME]
+    slotItem[DataComponents.ITEM_NAME] =
+        if (slotItem[DataComponents.ITEM_NAME] == model) slotItem.prototype.get(DataComponents.ITEM_NAME) else model
 
     return TriState.TRUE
 }

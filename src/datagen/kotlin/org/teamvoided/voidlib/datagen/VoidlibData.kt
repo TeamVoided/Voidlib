@@ -13,7 +13,7 @@ import org.teamvoided.voidlib.Voidlib
 import org.teamvoided.voidlib.Voidlib.log
 import org.teamvoided.voidlib.datagen.assets.EnLangProvider
 import org.teamvoided.voidlib.datagen.assets.ModelProvider
-import org.teamvoided.voidlib.datagen.data.registry.Paintings
+import org.teamvoided.voidlib.datagen.data.registry.ModPaintings
 import org.teamvoided.voidlib.datagen.data.tags.BlockTagsProvider
 import org.teamvoided.voidlib.datagen.data.tags.ItemTagsProvider
 import java.util.concurrent.CompletableFuture
@@ -36,7 +36,7 @@ object VoidlibData : DataGeneratorEntrypoint {
     }
 
     override fun buildRegistry(gen: RegistrySetBuilder) {
-        gen.add(Registries.PAINTING_VARIANT, Paintings::bootstrap)
+        gen.add(Registries.PAINTING_VARIANT, ModPaintings::bootstrap)
     }
 
     class RegistryProvider(o: FabricDataOutput, p: CompletableFuture<HolderLookup.Provider>) :

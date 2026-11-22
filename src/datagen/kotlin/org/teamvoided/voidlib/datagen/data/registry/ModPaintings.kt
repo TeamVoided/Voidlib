@@ -5,10 +5,9 @@ import net.minecraft.data.worldgen.BootstrapContext
 import net.minecraft.network.chat.Component
 import net.minecraft.network.chat.MutableComponent
 import net.minecraft.resources.ResourceKey
-import net.minecraft.world.entity.decoration.painting.PaintingVariant
-import java.util.*
+import net.minecraft.world.entity.decoration.PaintingVariant
 
-object Paintings : RegistryBootstrapper<PaintingVariant> {
+object ModPaintings : RegistryBootstrapper<PaintingVariant> {
 
     override fun BootstrapContext<PaintingVariant>.init() {
 //        painting(VPaintings.QUESTIONABLE, 1, 1, true)
@@ -23,14 +22,15 @@ object Paintings : RegistryBootstrapper<PaintingVariant> {
     ) {
         register(
             key, PaintingVariant(
-                width, height, key.identifier(),
-                Optional.of(key.langKey("title", ChatFormatting.YELLOW)),
-                if (hasAuthor) Optional.of(key.langKey("author", ChatFormatting.GRAY)) else Optional.empty()
+                width, height, key.location(),
+//                Optional.of(key.langKey("title", ChatFormatting.YELLOW)),
+//                if (hasAuthor) Optional.of(key.langKey("author", ChatFormatting.GRAY)) else Optional.empty()
             )
         )
     }
 
-    fun ResourceKey<PaintingVariant>.langKey(lineName: String, color: ChatFormatting): MutableComponent =
-        Component.translatable(identifier().toLanguageKey("painting", lineName)).withStyle(color)
+    fun ResourceKey<PaintingVariant>.langKey(lineName: String, color: ChatFormatting): MutableComponent {
+        return Component.translatable(location().toLanguageKey("painting", lineName)).withStyle(color)
+    }
 
 }

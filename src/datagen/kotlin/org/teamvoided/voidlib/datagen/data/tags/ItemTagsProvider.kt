@@ -12,9 +12,9 @@ class ItemTagsProvider(o: FabricDataOutput, p: CompletableFuture<HolderLookup.Pr
 //        copy(VBlockTags.BLOCK_TAG, VItemTags.ITEM_TAG)
 //        copy(ConventionalBlockTags.STORAGE_BLOCKS, ConventionalItemTags.STORAGE_BLOCKS)
 
-//        valueLookupBuilder(ItemTags.SWORDS)
-//        valueLookupBuilder(VItemTags.ITEM_TAG)
-//        valueLookupBuilder(ConventionalItemTags.HIDDEN_FROM_RECIPE_VIEWERS)
+//        getOrCreateTagBuilder(ItemTags.SWORDS)
+//        getOrCreateTagBuilder(VItemTags.ITEM_TAG)
+//        getOrCreateTagBuilder(ConventionalItemTags.HIDDEN_FROM_RECIPE_VIEWERS)
     }
 
 }

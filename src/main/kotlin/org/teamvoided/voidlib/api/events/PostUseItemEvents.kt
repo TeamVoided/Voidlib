@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.event.Event
 import net.fabricmc.fabric.api.event.EventFactory.createArrayBacked
 import net.minecraft.world.InteractionHand
 import net.minecraft.world.InteractionResult
+import net.minecraft.world.InteractionResultHolder
 import net.minecraft.world.entity.LivingEntity
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.ItemStack
@@ -87,8 +88,8 @@ object PostUseItemEvents {
     @FunctionalInterface
     fun interface PostUseItemCallback {
         fun interact(
-            result: InteractionResult, stack: ItemStack, level: Level, player: Player, hand: InteractionHand,
-        ): InteractionResult
+            result: InteractionResultHolder<ItemStack>, stack: ItemStack, level: Level, player: Player, hand: InteractionHand,
+        ): InteractionResultHolder<ItemStack>
     }
 
     @FunctionalInterface

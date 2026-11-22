@@ -1,15 +1,16 @@
 package org.teamvoided.voidlib.api.inventory.slot
 
-import net.minecraft.resources.Identifier
+import net.minecraft.resources.ResourceLocation
 import org.teamvoided.voidlib.Voidlib.id
 
 interface CustomSlotBackground {
 
-    fun getBackground(): Identifier?
+    fun getBackground(): ResourceLocation?
 
-    @Suppress("unused")
     companion object {
+
         val OUTSET_SLOT = id("container/slot/outset_slot")
         val EMPTY_SLOT = id("container/slot/empty_slot")
+
     }
 }

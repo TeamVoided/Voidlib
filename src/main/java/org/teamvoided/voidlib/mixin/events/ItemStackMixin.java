@@ -9,6 +9,7 @@ import com.llamalad7.mixinextras.sugar.ref.LocalRef;
 import net.fabricmc.fabric.api.util.TriState;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.entity.player.Player;
@@ -34,7 +35,7 @@ public abstract class ItemStackMixin {
     public abstract ItemStack copy();
 
     @ModifyReturnValue(method = "use", at = @At("RETURN"))
-    private InteractionResult postUseHook(InteractionResult original, Level level, Player player, InteractionHand hand) {
+    private InteractionResultHolder<ItemStack> postUseHook(InteractionResultHolder<ItemStack> original, Level level, Player player, InteractionHand hand) {
         return PostUseItemEvents.POST_USE.invoker().interact(original, (ItemStack) (Object) this, level, player, hand);
     }
 

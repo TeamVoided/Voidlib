@@ -5,14 +5,14 @@ import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.world.inventory.AbstractContainerMenu
 import net.minecraft.world.inventory.MenuType
 
-fun getType(containerMenu: AbstractContainerMenu): MenuType<*>? {
+fun getType(menu: AbstractContainerMenu): MenuType<*>? {
     try {
-        return containerMenu.type
+        return menu.type
     } catch (_: Exception) {
     }
     return null
 }
 
-fun getTypeHolder(containerMenu: AbstractContainerMenu): Holder<MenuType<*>>? {
-    return getType(containerMenu)?.let(BuiltInRegistries.MENU::wrapAsHolder)
+fun getTypeHolder(menu: AbstractContainerMenu): Holder<MenuType<*>>? {
+    return getType(menu)?.let(BuiltInRegistries.MENU::wrapAsHolder)
 }

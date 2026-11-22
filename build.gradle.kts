@@ -45,7 +45,7 @@ val uuid = iridium.fetchUUID(username) // Dev & vDev will always be null
 
 loom {
     splitEnvironmentSourceSets()
-    accessWidenerPath.set(File("src/main/resources/${iridium.modId}.classtweaker"))
+//    accessWidenerPath.set(File("src/main/resources/${iridium.modId}.classtweaker"))
 
     mods {
         register(iridium.modId) {
@@ -128,8 +128,8 @@ dependencies {
     // Compatibility
     // Runtime
     modImplementation(libs.modmenu)
-//    modCompileOnly(variantOf(libs.emi) { classifier("api") })
-//    modLocalRuntime(libs.emi)
+    modCompileOnly(variantOf(libs.emi) { classifier("api") })
+    modLocalRuntime(libs.emi)
     // Testing
     modImplementation(libs.bundles.cw)
     testmodImplementation(sourceSets.main.get().output)
