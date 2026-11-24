@@ -1,4 +1,4 @@
-package org.teamvoided.voidlib.impl
+package org.teamvoided.voidlib.impl.event
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.state.BlockState
 import org.jetbrains.annotations.ApiStatus

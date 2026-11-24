@@ -1,4 +1,4 @@
-package org.teamvoided.voidlib.impl
+package org.teamvoided.voidlib.impl.event
 
 import com.llamalad7.mixinextras.sugar.ref.LocalBooleanRef
 import com.llamalad7.mixinextras.sugar.ref.LocalDoubleRef

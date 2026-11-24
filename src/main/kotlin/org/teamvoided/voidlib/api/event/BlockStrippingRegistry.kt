@@ -2,7 +2,7 @@ package org.teamvoided.voidlib.api.event
 
 import net.minecraft.world.level.block.Block
 import org.teamvoided.voidlib.Voidlib.log
-import org.teamvoided.voidlib.impl.BlockStrippingRegistryIml
+import org.teamvoided.voidlib.impl.event.BlockStrippingRegistryIml
 
 object BlockStrippingRegistry {
 

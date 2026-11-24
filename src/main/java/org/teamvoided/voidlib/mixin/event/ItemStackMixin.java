@@ -35,7 +35,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.teamvoided.voidlib.api.event.InventoryItemEvents;
 import org.teamvoided.voidlib.api.event.PostUseItemEvents;
-import org.teamvoided.voidlib.impl.PrimaryModifierRegistryImpl;
+import org.teamvoided.voidlib.impl.event.PrimaryModifierRegistryImpl;
 
 import java.util.function.Consumer;
 

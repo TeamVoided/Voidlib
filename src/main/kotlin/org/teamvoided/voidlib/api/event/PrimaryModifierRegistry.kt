@@ -3,7 +3,7 @@ import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemStack
 import org.teamvoided.voidlib.Voidlib.log
-import org.teamvoided.voidlib.impl.PrimaryModifierRegistryImpl
+import org.teamvoided.voidlib.impl.event.PrimaryModifierRegistryImpl
 
 /**
  * PrimaryModifierRegistry allows for registering Attribute Modifier Ids

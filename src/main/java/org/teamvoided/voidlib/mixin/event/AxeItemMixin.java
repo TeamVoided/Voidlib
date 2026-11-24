@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.At;
 
 import java.util.Optional;
 
-import static org.teamvoided.voidlib.impl.BlockStrippingRegistryIml.getPossibleStrippedState;
+import static org.teamvoided.voidlib.impl.event.BlockStrippingRegistryIml.getPossibleStrippedState;
 
 @Mixin(AxeItem.class)
 public abstract class AxeItemMixin {
