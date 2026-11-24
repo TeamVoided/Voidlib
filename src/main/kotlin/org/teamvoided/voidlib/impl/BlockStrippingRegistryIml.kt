@@ -1,0 +1,21 @@
+package org.teamvoided.voidlib.impl
+import net.minecraft.world.level.block.Block
+import net.minecraft.world.level.block.state.BlockState
+import org.jetbrains.annotations.ApiStatus
+import java.util.*
+
+object BlockStrippingRegistryIml {
+
+    @ApiStatus.Internal
+    val BLOCK_STATE_MAP = mutableMapOf<Block, Block>()
+
+    @JvmStatic
+    fun getPossibleStrippedState(stripped: Optional<BlockState>, originalState: BlockState): Optional<BlockState> {
+        return if (stripped.isEmpty) {
+            Optional.ofNullable(BLOCK_STATE_MAP[originalState.block]?.withPropertiesOf(originalState))
+        } else {
+            stripped
+        }
+    }
+
+}
