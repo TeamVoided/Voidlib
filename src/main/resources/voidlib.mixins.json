@@ -7,7 +7,7 @@
     "AbstractContainerMenuMixin",
     "BlockBehaviourMixin",
     "debug.MappedRegistryMixin",
-    "events.ItemStackMixin"
+    "event.ItemStackMixin"
   ],
   "injectors": {
     "defaultRequire": 1
