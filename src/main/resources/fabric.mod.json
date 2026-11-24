@@ -17,6 +17,12 @@
         "adapter": "kotlin",
         "value": "org.teamvoided.voidlib.client.VoidlibClient::init"
       }
+    ],
+    "emi": [
+      {
+        "adapter": "kotlin",
+        "value": "org.teamvoided.voidlib.client.compat.emi.VoidlibPlugin"
+      }
     ]
   },
   "mixins": [
