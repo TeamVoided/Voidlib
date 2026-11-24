@@ -7,7 +7,7 @@ import net.minecraft.world.item.crafting.Ingredient
 import net.minecraft.world.level.block.Block
 
 @JvmRecord
-data class VoidToolMaterial(
+data class VToolMaterial(
     val durability: Int,
     val miningSpeedMultiplier: Float,
     val attackDamage: Float,
@@ -46,15 +46,15 @@ data class VoidToolMaterial(
 
     companion object {
 
-        fun copyOf(material: Tier, repairTag: TagKey<Item>): VoidToolMaterial {
-            return VoidToolMaterial(
+        fun copyOf(material: Tier, repairTag: TagKey<Item>): VToolMaterial {
+            return VToolMaterial(
                 material.uses, material.speed, material.attackDamageBonus,
                 material.incorrectBlocksForDrops, material.enchantmentValue, repairTag,
             )
         }
 
-        fun copyOf(material: Tier, repairIngredient: Ingredient): VoidToolMaterial {
-            return VoidToolMaterial(
+        fun copyOf(material: Tier, repairIngredient: Ingredient): VToolMaterial {
+            return VToolMaterial(
                 material.uses, material.speed, material.attackDamageBonus,
                 material.incorrectBlocksForDrops, material.enchantmentValue, repairIngredient,
             )
