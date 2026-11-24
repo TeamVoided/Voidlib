@@ -1,0 +1,53 @@
+package org.teamvoided.voidlib.api.block
+
+import net.minecraft.core.Direction
+import net.minecraft.world.level.block.FenceBlock
+import net.minecraft.world.level.block.FenceGateBlock
+import net.minecraft.world.level.block.IronBarsBlock
+import net.minecraft.world.level.block.WallBlock
+import net.minecraft.world.level.block.state.BlockState
+
+interface BlockConnection {
+    /**
+     * Allow all defined blocks to connect this block
+     * @param state The Block itself
+     * @param dir The direction the block is wishing to connect from
+     */
+    fun allowAllConnections(state: BlockState, dir: Direction): Boolean
+
+    /**
+     * Allow [WallBlock] to connect this block
+     * @param state The Block itself
+     * @param dir The direction the block is wishing to connect from
+     */
+    fun allowWallsToConnect(state: BlockState, dir: Direction): Boolean = allowAllConnections(state, dir)
+
+    /**
+     * Allow [FenceBlock] to connect this block
+     * @param state The Block itself
+     * @param dir The direction the block is wishing to connect from
+     */
+    fun allowFencesToConnect(state: BlockState, dir: Direction): Boolean = allowAllConnections(state, dir)
+
+    /**
+     * Allows for [IronBarsBlock] to connect to this block
+     * @param state The Block itself
+     * @param dir The direction the block is wishing to connect from
+     */
+    fun allowBarsToConnect(state: BlockState, dir: Direction): Boolean = allowAllConnections(state, dir)
+
+    /**
+     * Allows for connections to modded blocks. On its own this does noting. It's here to allow other mods to check for custom connections
+     * @param state The Block itself
+     * @param dir The direction the block is wishing to connect from
+     */
+    fun allowModdedToConnect(state: BlockState, dir: Direction): Boolean = allowAllConnections(state, dir)
+
+    /**
+     * Allows [FenceGateBlock] to use the [FenceGateBlock.IN_WALL] state
+     * @param state The Block itself
+     * @param dir The direction the block is wishing to connect from
+     */
+    fun allowGateInWallState(state: BlockState, dir: Direction): Boolean = false
+
+}
