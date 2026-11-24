@@ -3,12 +3,14 @@
 package org.teamvoided.voidlib.util
 
 import net.fabricmc.loader.api.FabricLoader
+import net.fabricmc.loader.api.ModContainer
 import net.minecraft.core.Holder
 import net.minecraft.core.Registry
 import net.minecraft.resources.ResourceKey
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.tags.TagKey
 import org.teamvoided.voidlib.Voidlib.MODID
+import java.util.function.Consumer
 import java.util.stream.Stream
 
 
@@ -35,3 +37,8 @@ fun <V : Any, T : V> Registry<T>.registerHolder(id: ResourceLocation, entry: T):
 
 fun <T : Any, R : Registry<T>> ResourceKey<R>.tag(id: ResourceLocation): TagKey<T> = TagKey.create(this, id)
 fun <T : Any, R : Registry<T>> ResourceKey<R>.key(id: ResourceLocation): ResourceKey<T> = ResourceKey.create(this, id)
+
+
+fun ifMod(id: String, consumer: Consumer<ModContainer>) {
+    FabricLoader.getInstance().getModContainer(id).ifPresent(consumer)
+}
