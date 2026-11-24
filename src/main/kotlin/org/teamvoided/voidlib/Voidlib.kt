@@ -6,6 +6,8 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.teamvoided.voidlib.config.VoidlibConfig
 import org.teamvoided.voidlib.init.VEvents
+import org.teamvoided.voidlib.init.VLootContextParamSets
+import org.teamvoided.voidlib.init.VLootContextParams
 
 object Voidlib {
 
@@ -20,6 +22,8 @@ object Voidlib {
     fun init() {
         log.info("Voids your license")
         VEvents.init()
+        VLootContextParams.init()
+        VLootContextParamSets.init()
     }
 
     fun id(namespace: String, path: String): ResourceLocation = ResourceLocation.fromNamespaceAndPath(namespace, path)

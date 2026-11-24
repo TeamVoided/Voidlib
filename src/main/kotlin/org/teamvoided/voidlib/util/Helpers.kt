@@ -1,5 +1,3 @@
-@file:Suppress("unused")
-
 package org.teamvoided.voidlib.util
 
 import net.fabricmc.loader.api.FabricLoader
@@ -8,7 +6,9 @@ import net.minecraft.core.Holder
 import net.minecraft.core.Registry
 import net.minecraft.resources.ResourceKey
 import net.minecraft.resources.ResourceLocation
+import net.minecraft.server.level.ServerLevel
 import net.minecraft.tags.TagKey
+import net.minecraft.world.level.storage.loot.LootTable
 import org.teamvoided.voidlib.Voidlib.MODID
 import java.util.function.Consumer
 import java.util.stream.Stream
@@ -41,4 +41,8 @@ fun <T : Any, R : Registry<T>> ResourceKey<R>.key(id: ResourceLocation): Resourc
 
 fun ifMod(id: String, consumer: Consumer<ModContainer>) {
     FabricLoader.getInstance().getModContainer(id).ifPresent(consumer)
+}
+
+fun ServerLevel.getLootTable(key: ResourceKey<LootTable>): LootTable {
+    return server.reloadableRegistries().getLootTable(key)
 }
