@@ -4,9 +4,10 @@
   "package": "org.teamvoided.voidlib.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "AbstractContainerMenuMixin",
     "BlockBehaviourMixin",
-    "events.ItemStackMixin",
-    "AbstractContainerMenuMixin"
+    "debug.MappedRegistryMixin",
+    "events.ItemStackMixin"
   ],
   "injectors": {
     "defaultRequire": 1

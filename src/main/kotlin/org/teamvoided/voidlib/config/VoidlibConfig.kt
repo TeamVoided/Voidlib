@@ -15,4 +15,7 @@ class VoidlibConfig : Config(id(MODID)) {
     @Translatable.Desc("Enables or disables all custom content added by this lib. e.g. Custom particles, blocks etc.")
     var enableContent = ValidatedBoolean(true)
 
+    @JvmField
+    var devConfig = DevConfigSection()
+
 }
