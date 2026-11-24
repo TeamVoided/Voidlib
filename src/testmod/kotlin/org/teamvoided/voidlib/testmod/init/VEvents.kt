@@ -1,7 +1,7 @@
 package org.teamvoided.voidlib.testmod.init
 
-import org.teamvoided.voidlib.api.events.InventoryItemEvents
-import org.teamvoided.voidlib.api.events.PostUseItemEvents
+import org.teamvoided.voidlib.api.event.InventoryItemEvents
+import org.teamvoided.voidlib.api.event.PostUseItemEvents
 import org.teamvoided.voidlib.testmod.init.events.onClicked
 import org.teamvoided.voidlib.testmod.init.events.onClickedOnOther
 import org.teamvoided.voidlib.testmod.init.events.*

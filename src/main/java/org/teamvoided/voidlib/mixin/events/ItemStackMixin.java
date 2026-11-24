@@ -25,8 +25,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import org.teamvoided.voidlib.api.events.InventoryItemEvents;
-import org.teamvoided.voidlib.api.events.PostUseItemEvents;
+import org.teamvoided.voidlib.api.event.InventoryItemEvents;
+import org.teamvoided.voidlib.api.event.PostUseItemEvents;
 
 @Mixin(ItemStack.class)
 public abstract class ItemStackMixin {

@@ -1,4 +1,4 @@
-package org.teamvoided.voidlib.api.events
+package org.teamvoided.voidlib.api.event
 
 import net.fabricmc.fabric.api.event.Event
 import net.fabricmc.fabric.api.event.EventFactory.createArrayBacked
