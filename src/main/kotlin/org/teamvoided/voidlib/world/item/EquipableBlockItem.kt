@@ -10,7 +10,8 @@ import net.minecraft.world.item.ItemStack
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.Block
 
-class EquipableBlockItem(
+// TODO add simple javadoc
+open class EquipableBlockItem(
     block: Block, properties: Properties,
     val slot: EquipmentSlot = EquipmentSlot.HEAD,
 ) : BlockItem(block, properties), Equipable {

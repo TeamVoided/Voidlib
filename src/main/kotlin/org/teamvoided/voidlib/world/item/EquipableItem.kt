@@ -9,7 +9,8 @@ import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.level.Level
 
-class EquipableItem(properties: Properties, val slot: EquipmentSlot = EquipmentSlot.HEAD) : Item(properties), Equipable {
+// TODO add simple javadoc
+open class EquipableItem(properties: Properties, val slot: EquipmentSlot = EquipmentSlot.HEAD) : Item(properties), Equipable {
 
     override fun getEquipmentSlot(): EquipmentSlot = slot
 
