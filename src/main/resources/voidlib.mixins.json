@@ -6,6 +6,7 @@
   "mixins": [
     "AbstractContainerMenuMixin",
     "BlockBehaviourMixin",
+    "EntityCollisionContextMixin",
     "connection.FenceBlockMixin",
     "connection.FenceGateBlockMixin",
     "connection.IronBarsBlockMixin",

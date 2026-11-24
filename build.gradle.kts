@@ -45,7 +45,7 @@ val uuid = iridium.fetchUUID(username) // Dev & vDev will always be null
 
 loom {
     splitEnvironmentSourceSets()
-//    accessWidenerPath.set(File("src/main/resources/${iridium.modId}.classtweaker"))
+    accessWidenerPath.set(File("src/main/resources/${iridium.modId}.classtweaker"))
 
     mods {
         register(iridium.modId) {
