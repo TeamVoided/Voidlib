@@ -6,7 +6,7 @@ import org.teamvoided.voidlib.testmod.init.events.onClicked
 import org.teamvoided.voidlib.testmod.init.events.onClickedOnOther
 import org.teamvoided.voidlib.testmod.init.events.*
 
-object VEvents {
+object VTEvents {
 
     fun init() {
         InventoryItemEvents.ON_CLICKED.register(::onClicked)

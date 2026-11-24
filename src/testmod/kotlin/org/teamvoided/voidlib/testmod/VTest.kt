@@ -5,11 +5,13 @@ import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback
 import net.minecraft.ChatFormatting
 import net.minecraft.network.chat.Component
 import net.minecraft.network.chat.MutableComponent
+import net.minecraft.resources.ResourceLocation
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.teamvoided.voidlib.Voidlib
 import org.teamvoided.voidlib.client.util.getCurrentScreen
 import org.teamvoided.voidlib.client.util.getMenu
-import org.teamvoided.voidlib.testmod.init.VEvents
+import org.teamvoided.voidlib.testmod.init.VTEvents
 import org.teamvoided.voidlib.world.inventory.getTypeHolder
 
 object VTest : ModInitializer {
@@ -21,7 +23,7 @@ object VTest : ModInitializer {
 
     override fun onInitialize() {
         log.info("Test modding: $MODID!")
-        VEvents.init()
+        VTEvents.init()
 
         ItemTooltipCallback.EVENT.register { _, _, flags, tooltips ->
             val screen = getCurrentScreen()
@@ -41,5 +43,7 @@ object VTest : ModInitializer {
 
     private fun text(message: String): MutableComponent? =
         Component.literal(message).withStyle(ChatFormatting.DARK_GRAY)
+
+    fun id(path: String): ResourceLocation = Voidlib.id(MODID, path)
 
 }
